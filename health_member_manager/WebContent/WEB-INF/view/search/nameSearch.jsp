@@ -629,7 +629,7 @@ alert("${requestScope.attMessage}");
 	<div id="shoesCageRegisterPage" title="신발장등록" style="display: none">
 		<b2>신발장등록 ${sessionScope.name}</b2>
 		<br>
-		<form action="/health_member_manager/health/shoesRegisterForNameList.do" method="post" class="f_register" name="shoesCage" onsubmit="return shoesCageCheck()">
+		<form action="/health_member_manager/health/shoesRegisterForNameList.do" method="get" class="f_register" name="shoesCage" onsubmit="return shoesCageCheck()">
 			<input type="hidden" value="${sessionScope.searchName}" name="searchName">
 			회원번호 :${requestScope.memberNo}<input type="hidden" name="memberNo" value="${requestScope.memberNo}"><br>
 			신발장번호:<input type="text" name="shoesNo" id="usingNo" size="4">
