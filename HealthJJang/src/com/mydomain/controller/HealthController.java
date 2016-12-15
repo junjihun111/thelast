@@ -64,7 +64,7 @@ public class HealthController {
 	
 	
 	
-	@RequestMapping("/Board/BoardList")
+	@RequestMapping(value="/Board/BoardList",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView getList(String page, ModelMap map, HttpSession session, HttpServletRequest request)
 	{
 		
@@ -85,7 +85,6 @@ public class HealthController {
 		
 		try{
 			Map<String, Object> pagingmap=service.getBoardListPaging(pagingno);
-			session.setAttribute("BoardList", pagingmap.get("list"));
 			//System.out.println(pagingmap.get("pageBean").toString());
 			return new ModelAndView("Board/BoardList.tiles","pageBean",pagingmap.get("pageBean"));
 		}catch(Exception e)
@@ -98,7 +97,7 @@ public class HealthController {
 		
 	}
 	
-	@RequestMapping(value="/Board/insertSuccess", method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value="/Board/insertSuccess",method={RequestMethod.GET ,RequestMethod.POST})
 	public String insert(String header, String name, String content, String password, String writer, HttpSession session, HttpServletRequest request)
 	{
 
@@ -131,7 +130,7 @@ public class HealthController {
 	}
 	
 	
-	@RequestMapping("/insertSuccessre")
+	@RequestMapping(value="/insertSuccessre",method = {RequestMethod.GET,RequestMethod.POST})
 	public String insertSuccessre(HttpSession session, HttpServletRequest request)
 	{		
 		return "Board/insertSuccess.tiles";
@@ -146,7 +145,7 @@ public class HealthController {
 	}
 	
 	
-	@RequestMapping("/Board/delete")
+	@RequestMapping(value="/Board/delete",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView delete(HttpSession session)
 	{
 		Board board=(Board)session.getAttribute("list");
@@ -161,14 +160,14 @@ public class HealthController {
 		return new ModelAndView("BoardList.do");
 	}
 	
-	@RequestMapping("/Board/update")
+	@RequestMapping(value="/Board/update",method={RequestMethod.GET ,RequestMethod.POST})
 	public String update(HttpSession session)
 	{	
 		/*Board board=(Board)session.getAttribute("list");*/
 		return "Board/update.tiles";
 	}
 	
-	@RequestMapping("/Board/updateSuccess")
+	@RequestMapping(value="/Board/updateSuccess",method={RequestMethod.GET ,RequestMethod.POST})
 	public String updateSuccess(HttpSession session, HttpServletRequest request)
 	{
 		Board board=(Board) session.getAttribute("list");
@@ -200,7 +199,7 @@ public class HealthController {
 		return "redirect:updateSuccessre.do";
 	}
 	
-	@RequestMapping("/updateSuccessre")
+	@RequestMapping(value="/updateSuccessre",method={RequestMethod.GET ,RequestMethod.POST})
 	public String updateSuccessre()
 	{
 		return "Board/updateSuccess.tiles";
@@ -214,7 +213,7 @@ public class HealthController {
 	
 	
 	
-	@RequestMapping("/Board/dagleinsert")
+	@RequestMapping(value="/Board/dagleinsert",method={RequestMethod.GET ,RequestMethod.POST})
 	public String dagleinsert(String board_password, String content, String writer, HttpSession session)
 	{
 		Board board=(Board)session.getAttribute("list");
@@ -250,7 +249,7 @@ public class HealthController {
 	
 	
 	
-	@RequestMapping("/Board/insertList")
+	@RequestMapping(value="/Board/insertList",method={RequestMethod.GET ,RequestMethod.POST})
 	public String insertList(String page, ModelMap map,HttpSession session,HttpServletRequest request)
 	{
 	
@@ -293,7 +292,7 @@ public class HealthController {
 	
 	
 	
-	@RequestMapping("/Board/mainBoard")
+	@RequestMapping(value="/Board/mainBoard",method={RequestMethod.GET ,RequestMethod.POST})
 	public String login(HttpSession session)
 	{
 		
@@ -301,7 +300,7 @@ public class HealthController {
 	
 	}
 	
-	@RequestMapping("/mainguest1")
+	@RequestMapping(value="/mainguest1",method={RequestMethod.GET ,RequestMethod.POST})
 	public String person(HttpSession session)
 	{
 		session.removeAttribute("managerID");
@@ -310,7 +309,7 @@ public class HealthController {
 		return "mainguest1.tiles";
 	}
 	
-	@RequestMapping("/mainSuccess")
+	@RequestMapping(value="/mainSuccess",method={RequestMethod.GET ,RequestMethod.POST})
 	public String mangerSuccess(@ModelAttribute ManagerInfo member, BindingResult errors, HttpServletRequest request, HttpSession session)
 	{
 		ManagerInfo member2=null;
@@ -388,7 +387,7 @@ public class HealthController {
 		}
 	}
 	
-	@RequestMapping("/Board/updateajax")
+	@RequestMapping(value="/Board/updateajax",method={RequestMethod.GET ,RequestMethod.POST})
 	public String updateajax(String updatepassword, HttpSession session, HttpServletRequest request)
 	{
 		session.removeAttribute("error");
@@ -410,7 +409,7 @@ public class HealthController {
 	}
 
 	
-	@RequestMapping("/Board/namefind")
+	@RequestMapping(value="/Board/namefind",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView namefind(String Boardnamefind, String page, ModelMap map, HttpSession session, HttpServletRequest request){
 		
 		List list2=service.findBoardCode();
@@ -447,7 +446,7 @@ public class HealthController {
 	}
 	
 	
-	@RequestMapping("/Board/passwordfind")
+	@RequestMapping(value="/Board/passwordfind",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView passwordfind(String Boardpasswordfind, String page, ModelMap map, HttpSession session, HttpServletRequest request ){
 		
 		
@@ -490,7 +489,7 @@ public class HealthController {
 	//공지사항
 	
 	
-	@RequestMapping("/Board/operationBoardList")
+	@RequestMapping(value="/Board/operationBoardList",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView operationBoardList(String page, HttpSession session, HttpServletRequest request){
 		 
 		List list=service.selectOperatorList();
@@ -515,7 +514,7 @@ public class HealthController {
 		return new ModelAndView("Board/operationBoardList.tiles");
 	}
 	
-	@RequestMapping("/Board/operationinsertList")
+	@RequestMapping(value="/Board/operationinsertList",method={RequestMethod.GET ,RequestMethod.POST})
 	public String operationinsertList(String page, ModelMap map,HttpSession session,HttpServletRequest request)
 	{
 		OperatorBoard board=null;
@@ -539,7 +538,7 @@ public class HealthController {
 		return "Board/operationinsertList.tiles";
 	}
 	
-	@RequestMapping("/Board/operatorinsertSuccess")
+	@RequestMapping(value="/Board/operatorinsertSuccess",method={RequestMethod.GET ,RequestMethod.POST})
 	public String operatorinsert(String header, String name, String content, String password, String writer, HttpSession session, HttpServletRequest request)
 	{
 		
@@ -570,7 +569,7 @@ public class HealthController {
 		}
 	}
 	
-	@RequestMapping("/operatorinsertSuccessre")
+	@RequestMapping(value="/operatorinsertSuccessre",method={RequestMethod.GET ,RequestMethod.POST})
 	public String operatorinsertSuccessre()
 	{
 		return "Board/operatorinsertSuccess.tiles";
@@ -579,13 +578,13 @@ public class HealthController {
 	
 	
 	
-	@RequestMapping("/Board/operatorupdate")
+	@RequestMapping(value="/Board/operatorupdate",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView operatorupdate()
 	{	
 		return new ModelAndView("Board/operatorupdate.tiles");
 	}
 	
-	@RequestMapping("/Board/operatordelete")
+	@RequestMapping(value="/Board/operatordelete",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView operatordelete(String page, HttpSession session)
 	{
 		Integer no=new Integer(page);
@@ -599,7 +598,7 @@ public class HealthController {
 		return new ModelAndView("Board/operationBoardList.tiles");
 	}
 	
-	@RequestMapping("/Board/operatorupdateSuccess")
+	@RequestMapping(value="/Board/operatorupdateSuccess",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView operatorupdateSuccess(HttpSession session, HttpServletRequest request)
 	{
 		OperatorBoard board=(OperatorBoard) session.getAttribute("list");
@@ -652,7 +651,7 @@ public class HealthController {
 	}
 	
 	//댓글 삭제
-	@RequestMapping("/Board/deletedagle")
+	@RequestMapping(value="/Board/deletedagle",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView dagledelete(String page,String content,HttpSession session)
 	{
 		Integer no=new Integer(page);
@@ -670,7 +669,7 @@ public class HealthController {
 		
 	}
 	
-	@RequestMapping("/Board/updatedagle")
+	@RequestMapping(value="/Board/updatedagle",method={RequestMethod.GET ,RequestMethod.POST})
 	public ModelAndView dagleupdate(String pgaeing,String board_password, String updatepassword, String updatecontent,HttpSession session)
 	{
 		Date date=new Date(System.currentTimeMillis());
@@ -702,7 +701,7 @@ public class HealthController {
 		
 	}
 	
-	@RequestMapping("/Board/deletedageguest")
+	@RequestMapping(value="/Board/deletedageguest",method={RequestMethod.GET ,RequestMethod.POST})
 	public String deletedagleguest(String pgaeingin,String board_passwordre, String updatepassworddelete,HttpSession session )
 	{
 		System.out.println("들어간다");

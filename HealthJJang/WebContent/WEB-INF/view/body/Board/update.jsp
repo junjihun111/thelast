@@ -46,7 +46,7 @@
 
 
 <jsp:include page="/WEB-INF/view/body/boardmenu.jsp"/>
-   <form action="updateSuccess.do" name="join_form" method="get">
+   <form action="updateSuccess.do" name="join_form">
 
 <select id="header" name="header"><!-- onchange 는 select 의 선택값이 변경될때 마다 발생하는 이벤트 처리자. -->
       <option>${sessionScope.list.board_header}</option>

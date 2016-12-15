@@ -50,7 +50,7 @@
 
 
 <jsp:include page="/WEB-INF/view/body/boardmenu.jsp"/>
-   <form action="operatorupdateSuccess.do" name="join_form" method="get">
+   <form action="operatorupdateSuccess.do" name="join_form">
 
 <select id="headeroperator" name="headeroperator"><!-- onchange 는 select 의 선택값이 변경될때 마다 발생하는 이벤트 처리자. -->
       <option>공지사항</option>

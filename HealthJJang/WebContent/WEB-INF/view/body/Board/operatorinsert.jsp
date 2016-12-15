@@ -86,6 +86,7 @@
       
       <div id="insertbox">
       	<a href='operatorinsertSuccess.do'><button id="check">등록</button></a> <input type="reset" value="초기화">
+      	<input type="hidden" name="password" value="password">
       	<br><br>
       	<c:if test="${not empty requestScope.errorinsert }">
       		${requestScope.errorinsert}

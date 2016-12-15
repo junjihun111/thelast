@@ -39,7 +39,7 @@ body{background-color: black}
 </c:if>
 
 <br>
-<form action="mainSuccess.do" name="join_form" method="GET">
+<form action="mainSuccess.do" name="join_form" method="post">
 			<span class="idcolor">관리자 ID=</span><input type="text" name="managerId" id="managerId" value="ID"><br>
 			
 			<form:errors path="managerInfo.managerId"/>

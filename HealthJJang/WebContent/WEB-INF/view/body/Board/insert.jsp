@@ -76,7 +76,7 @@
 </script>
 
 
-<form action="insertSuccess.do" name="join_form" method="get">
+<form action="insertSuccess.do" name="join_form">
 
 말머리 : <select name="header" id="header"><!-- onchange 는 select 의 선택값이 변경될때 마다 발생하는 이벤트 처리자. -->
       <c:forEach items="${sessionScope.select}" var="name">
@@ -97,6 +97,7 @@
       
       <div id="insertbox">
       	<a href='insertSuccess.do'><button id="check">등록</button></a> <input type="reset" value="초기화">
+      	<input type="hidden" name="password" value="password">
       	<br><br>
       	<c:if test="${not empty requestScope.errorinsert }">
       		${requestScope.errorinsert}
